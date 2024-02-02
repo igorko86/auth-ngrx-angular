@@ -1,0 +1,33 @@
+=={{isSubmitting$ | async}}
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="test-xs-center">Sign Up</h1>
+        <p class="text-xs-center">
+          <a routerLink="">Have an account?</a>
+        </p>
+        <mc-backend-error-messages
+          *ngIf="errors$ | async as errors"
+          [errors] = "errors"
+        ></mc-backend-error-messages>
+        <form class="form" [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+          <select formControlName="roleId" class="select">
+            <option class="option" *ngFor="let role of roles" [ngValue]="role.id">{{role.title}}</option>
+          </select>
+          <fieldset class="from-group">
+            <input [class.invalid]="isValidField('username')" formControlName="username" type="text" class="form-control form-control-lg" placeholder="UserName">
+            <span *ngIf="isValidField('username')" class="error">Required</span>
+          </fieldset>
+          <fieldset class="from-group">
+            <input [class.invalid]="isValidField('email')" formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email">
+          </fieldset>
+          <fieldset class="from-group">
+            <input [class.invalid]="isValidField('password')" formControlName="password" type="password" class="form-control form-control-lg" placeholder="Password">
+          </fieldset>
+          <button type="submit" class="btn btn-lg btn-primary pull-xs-right" [disabled]="isSubmitting$ | async">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

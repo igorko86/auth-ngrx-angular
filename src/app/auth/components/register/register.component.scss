@@ -1,0 +1,21 @@
+.select, option {
+  width: 200px;
+}
+
+.option {
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.invalid{
+  border: 1px solid red;
+}
+
+.error{
+  color: red;
+}
